@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tomoka-uzumaki-ai.github.io/private-care-check-jp/sitemap.xml
