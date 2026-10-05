@@ -1,0 +1,10 @@
+{
+  "input_kind": "synthetic",
+  "currency": "JPY_TAX_INCLUDED",
+  "options": [
+    {"label": "必要な物だけ", "horizon": "今回1注文", "comparison_key": "同じ必須品・任意追加品の有無", "basis": "架空例。実商品・店の現価格ではない", "future_points_face_yen": 500,
+     "orders": [{"goods_yen": 4200, "shipping_yen": 550, "payment_fee_yen": 0, "other_confirmed_yen": 0, "redeemed_discount_yen": 0}]},
+    {"label": "送料のため任意品900円を追加", "horizon": "今回1注文", "comparison_key": "同じ必須品・任意追加品の有無", "basis": "架空例。送料無料の閾値を実店舗から導いていない", "future_points_face_yen": 700,
+     "orders": [{"goods_yen": 5100, "shipping_yen": 0, "payment_fee_yen": 0, "other_confirmed_yen": 0, "redeemed_discount_yen": 0}]}
+  ]
+}
