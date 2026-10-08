@@ -1,0 +1,6 @@
+row,period,name,type,currency,basis,amount,refunds,platformFees,received,payoutFees,costPaid,costComplete
+income,Fictional September,Shop A,sale,JPY,gross,10000,1000,1800,7000,200,,
+income,Fictional September,Referral B,referral,JPY,net,3000,,,0,0,,
+income,Fictional September,Membership C,membership,USD,net,25.50,,,20.50,0,,
+cost,Fictional September,,,JPY,,,,,,,2000,true
+cost,Fictional September,,,USD,,,,,,,5.50,true
