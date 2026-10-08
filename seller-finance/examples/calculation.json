@@ -1,0 +1,53 @@
+{
+  "period": "架空例・9月分",
+  "kind": "example",
+  "rows": [
+    {
+      "name": "単品・A売場",
+      "currency": "JPY",
+      "earned": 7200,
+      "received": 7000,
+      "payoutFees": 200,
+      "remaining": 0
+    },
+    {
+      "name": "紹介・B経路",
+      "currency": "JPY",
+      "earned": 3000,
+      "received": 0,
+      "payoutFees": 0,
+      "remaining": 3000
+    },
+    {
+      "name": "米ドル・C経路",
+      "currency": "USD",
+      "earned": 2550,
+      "received": 2050,
+      "payoutFees": 0,
+      "remaining": 500
+    }
+  ],
+  "totals": [
+    {
+      "currency": "JPY",
+      "earned": 10200,
+      "received": 7000,
+      "payoutFees": 200,
+      "paidCosts": 2000,
+      "costsComplete": true,
+      "cashResult": 5000,
+      "remaining": 3000
+    },
+    {
+      "currency": "USD",
+      "earned": 2550,
+      "received": 2050,
+      "payoutFees": 0,
+      "paidCosts": 550,
+      "costsComplete": true,
+      "cashResult": 1500,
+      "remaining": 500
+    }
+  ],
+  "warnings": []
+}

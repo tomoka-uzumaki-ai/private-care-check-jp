@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "period": "架空例・9月分",
+  "kind": "example",
+  "entries": [
+    {
+      "name": "単品・A売場",
+      "type": "sale",
+      "currency": "JPY",
+      "basis": "gross",
+      "amount": "10000",
+      "refunds": "1000",
+      "platformFees": "1800",
+      "received": "7000",
+      "payoutFees": "200"
+    },
+    {
+      "name": "紹介・B経路",
+      "type": "referral",
+      "currency": "JPY",
+      "basis": "net",
+      "amount": "3000",
+      "refunds": "",
+      "platformFees": "",
+      "received": "0",
+      "payoutFees": "0"
+    },
+    {
+      "name": "米ドル・C経路",
+      "type": "membership",
+      "currency": "USD",
+      "basis": "net",
+      "amount": "25.50",
+      "refunds": "",
+      "platformFees": "",
+      "received": "20.50",
+      "payoutFees": "0"
+    }
+  ],
+  "costs": {
+    "JPY": {
+      "paid": "2000",
+      "complete": true
+    },
+    "USD": {
+      "paid": "5.50",
+      "complete": true
+    }
+  }
+}
