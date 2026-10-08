@@ -1,0 +1,4 @@
+row,period,name,type,currency,basis,amount,refunds,platformFees,received,payoutFees,costPaid,costComplete
+income,架空例・9月分,単品・A売場,sale,JPY,gross,10000,1000,1800,7000,200,,
+income,架空例・9月分,紹介・B経路,referral,JPY,net,3000,,,0,0,,
+income,架空例・9月分,米ドル・C経路,membership,USD,net,25.50,,,20.50,0,,
