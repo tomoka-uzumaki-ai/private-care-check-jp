@@ -4,6 +4,10 @@
 
 **まずは[1期間の準備済みCSVを無料で集計する](https://tomoka-uzumaki-ai.github.io/private-care-check-jp/seller-finance/csv-trial/ja.html)。** [English trial](https://tomoka-uzumaki-ai.github.io/private-care-check-jp/seller-finance/csv-trial/)もあります。少数の入力や、たまの1ファイルなら、無料版や自分の表計算で作業を完了できます。
 
+**English:** [Try one prepared CSV](https://tomoka-uzumaki-ai.github.io/private-care-check-jp/seller-finance/csv-trial/) → [map source columns if needed](https://tomoka-uzumaki-ai.github.io/private-care-check-jp/seller-finance/column-map/en.html). Save separate-currency results and remaining checks. One occasional file can stay free. Repeated multi-file processing uses the same Japanese/English kit: [Gumroad](https://jikkenlog.gumroad.com/l/csv-income-reconciliation-kit) or [itch.io](https://tiny-deduction-lab.itch.io/csv-income-reconciliation-kit), not both. Python 3.9+ on a computer and prepared UTF-8 CSVs in the exact 13-column format are required; check final price and conditions before buying.
+
+Gumroadを選ぶ場合は、[日本語の無料試用](https://tomoka-uzumaki-ai.github.io/private-care-check-jp/seller-finance/csv-trial/ja.html?from=gumroad)／[English free trial](https://tomoka-uzumaki-ai.github.io/private-care-check-jp/seller-finance/csv-trial/?from=gumroad)から、列対応・集計の後も同じキットのGumroad販売ページへ戻れます。
+
 ## 無料で試す手順
 
 1. [列の対応を整理する](https://tomoka-uzumaki-ai.github.io/private-care-check-jp/seller-finance/column-map/)か、[架空の入出力例](https://tomoka-uzumaki-ai.github.io/private-care-check-jp/seller-finance/english/)を読む。
