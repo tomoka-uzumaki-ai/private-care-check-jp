@@ -97,7 +97,13 @@
   function read() {
     return {kind:document.getElementById('kind').value,item:document.getElementById('item').value,channels:[0,1].map(i=>({name:document.getElementById(`c${i}-name`).value,checked:document.getElementById(`c${i}-date`).value,source:document.getElementById(`c${i}-source`).value,confirmed:document.getElementById(`c${i}-confirm`).checked,facts:Object.fromEntries(Object.keys(rules).map(k=>[k,{value:document.getElementById(`c${i}-${k}`).value,source:document.getElementById(`c${i}-${k}-source`).value,...(k==='defect'?{days:Number(document.getElementById(`c${i}-days`).value)}:{})}]))}))};
   }
-  form.addEventListener('input',invalidate);form.addEventListener('change',invalidate);
+  function changed(event) {
+    const id=event.target.id||'',channel=/^c([01])-/.exec(id);
+    if(channel && id!==`c${channel[1]}-confirm`) document.getElementById(`c${channel[1]}-confirm`).checked=false;
+    else if(id==='item'||id==='kind') [0,1].forEach(i=>document.getElementById(`c${i}-confirm`).checked=false);
+    invalidate();
+  }
+  form.addEventListener('input',changed);form.addEventListener('change',changed);
   form.addEventListener('submit',e=>{e.preventDefault();invalidate();try{current=build(read());output.innerHTML=html(current);download.disabled=false;jsonButton.disabled=false;message.textContent=`草案を作成しました。未確認${current.unknown.length}項目、経路間の差${current.different.length}項目。販売者の承認済み説明ではありません。`;}catch(err){message.textContent=err.message;}});
   document.getElementById('clear').addEventListener('click',()=>{form.reset();invalidate();message.textContent='入力と草案をクリアしました。保存済みのファイルは削除していません。';});
   document.getElementById('demo').addEventListener('click',()=>{

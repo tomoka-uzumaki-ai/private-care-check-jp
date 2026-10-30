@@ -1,6 +1,6 @@
 'use strict';
 const $ = id => document.getElementById(id);
-let nextId = 0, current = null, inputEpoch = 0;
+let nextId = 0, current = null, inputEpoch = 0, loadEpoch = 0;
 const typeNames = {sale:'単品販売',membership:'会員・継続収入',referral:'紹介報酬',reading:'読まれた量による収入',other:'その他'};
 const fields = [['amount','報告額'],['refunds','返金・取消額'],['platformFees','販売・決済手数料'],['received','実際に着金した額'],['payoutFees','着金時に引かれた入金手数料']];
 function el(tag, text, cls) { const n = document.createElement(tag); if(text !== undefined) n.textContent=text; if(cls)n.className=cls; return n; }
@@ -49,7 +49,7 @@ const sample={version:1,period:'架空例 · 9月分の2経路',kind:'example',e
 $('example').addEventListener('click',()=>restore(sample));$('add').addEventListener('click',()=>{addEntry();invalidate();});
 $('desk').addEventListener('input',()=>invalidate());$('desk').addEventListener('submit',e=>{e.preventDefault();try{const data=inputData();current={input:data,result:FinanceDesk.calculate(data)};render(current.result);}catch(error){invalidate(error.message);}});
 $('save').addEventListener('click',()=>{try{const data=inputData();FinanceDesk.calculate(data);download('seller-finance-input.json',JSON.stringify(data,null,2)+'\n','application/json');$('message').textContent='入力JSONを保存しました。端末内で管理してください。';}catch(error){$('message').textContent=error.message;}});
-$('load').addEventListener('change',async()=>{const file=$('load').files[0],token=inputEpoch;if(!file)return;try{if(file.size>512000)throw new Error('入力JSONは512KB以下にしてください。');const data=JSON.parse(await file.text());if(token!==inputEpoch)throw new Error('読み込み中に入力が変わりました。もう一度ファイルを選んでください。');restore(data);}catch(error){$('message').textContent='読み込めませんでした。現在の入力は保持しています。 '+error.message;}finally{$('load').value='';}});
+$('load').addEventListener('change',async()=>{const request=++loadEpoch,file=$('load').files[0],token=inputEpoch;if(!file)return;try{if(file.size>512000)throw new Error('入力JSONは512KB以下にしてください。');const text=await file.text();if(request!==loadEpoch)return;const data=JSON.parse(text);if(token!==inputEpoch)throw new Error('読み込み中に入力が変わりました。もう一度ファイルを選んでください。');restore(data);}catch(error){if(request===loadEpoch)$('message').textContent='読み込めませんでした。現在の入力は保持しています。 '+error.message;}finally{if(request===loadEpoch)$('load').value='';}});
 $('csv').addEventListener('click',()=>{if(!current)return;const rows=[['区分',current.result.kind==='example'?'架空例':'入力集計'],['対象',current.result.period],['通貨','確定収入（入金手数料前）','実入金','入金手数料','費用全体確認済み','支払済み費用','回収済みの差額','未回収の計算値']];for(const t of current.result.totals)rows.push([t.currency,...[t.earned,t.received,t.payoutFees].map(v=>FinanceDesk.format(v,t.currency)),t.costsComplete?'確認済み':'未確認',...[(t.costsComplete?t.paidCosts:null),t.cashResult,t.remaining].map(v=>FinanceDesk.format(v,t.currency))]);rows.push([],['経路','収入区分','通貨','確定収入','実入金','未回収の計算値']);for(const r of current.result.rows)rows.push([r.name,typeNames[r.type],r.currency,...[r.entitlement,r.received,r.remaining].map(v=>FinanceDesk.format(v,r.currency))]);download('seller-finance-summary.csv',FinanceDesk.csv(rows),'text/csv;charset=utf-8');});
 $('report').addEventListener('click',()=>{if(current)download('seller-finance-report.html',reportHTML(),'text/html;charset=utf-8');});
 $('csv-period').addEventListener('input',()=>{$('csv-period-confirm').checked=false;});
