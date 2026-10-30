@@ -4,7 +4,7 @@
   if (new URLSearchParams(location.search).get('from') !== 'gumroad') return;
   const paid = 'https://tiny-deduction-lab.itch.io/csv-income-reconciliation-kit';
   const gumroad = 'https://jikkenlog.gumroad.com/l/csv-income-reconciliation-kit';
-  const routes = /\/seller-finance\/(?:(?:index\.html)?|english\/(?:index\.html)?|column-map\/(?:index\.html|en\.html)?|csv-trial\/(?:index\.html|ja\.html)?)$/;
+  const routes = /\/seller-finance\/(?:(?:index\.html)?|english\/(?:index\.html)?|column-map\/(?:index\.html|en\.html)?|csv-trial\/(?:index\.html|ja\.html)?|csv-ready\/(?:index\.html|en\.html)?)$/;
   for (const a of document.querySelectorAll('a[href]')) {
     const raw = a.getAttribute('href');
     if (!raw || raw.startsWith('#')) continue;
