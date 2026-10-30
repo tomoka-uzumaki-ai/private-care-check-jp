@@ -29,7 +29,7 @@ async function formChecks(lang){
  w.ids.pack.onclick();const zip=Buffer.from(await w.downloads.at(-1).blob.arrayBuffer()),entries=zipEntries(zip);
  assert.deepEqual(Object.keys(entries),['prepared/input-01.csv','manifest.json','README.txt']);assert.equal(entries['prepared/input-01.csv'].toString(),fixture,'input data unchanged');
  const manifest=JSON.parse(entries['manifest.json']);assert.equal(manifest.origin,'unconfirmed');assert.equal(manifest.period,'2026-10');assert.deepEqual(manifest.files,['prepared/input-01.csv']);assert.doesNotMatch(entries['manifest.json'].toString()+entries['README.txt'].toString(),/private-original-name/,'private original filenames do not enter metadata');assert.doesNotMatch(Object.keys(entries).join(' '),/summarize|\.py/,'paid code is not included');
- if(lang==='en'){assert.doesNotMatch(entries['README.txt'].toString(),/[\u3040-\u9fff]/);assert.match(entries['README.txt'].toString(),/--data-kind entered/);assert.match(entries['README.txt'].toString(),/Use example only for fictional inputs/);}
+ if(lang==='en'){assert.doesNotMatch(entries['README.txt'].toString(),/[\u3040-\u9fff]/);assert.match(entries['README.txt'].toString(),/--data-kind entered/);assert.match(entries['README.txt'].toString(),/Use summarize\.py from the purchased kit’s english folder/);assert.match(entries['README.txt'].toString(),/Use example only for fictional inputs/);}
  await w.submit(Array.from({length:5},(_,i)=>input('input'+i+'.csv',fixture.replace('Work A','Work '+i),i===0?1048576:undefined)));assert.equal(w.ids.buy.hidden,false,'five files and the exact per-file size boundary are accepted');
  w.ids.files.onchange();assert.equal(w.ids.result.hidden,true);assert.equal(w.ids.pack.hidden,true);assert.equal(w.ids.buy.hidden,true);
  for(const files of [[],Array.from({length:6},(_,i)=>input('x'+i)),[input('large.csv',fixture,1048577)],[input('duplicate.csv',fixture+row())],[input('period.csv',fixture+row('B','2026-11'))]]){await w.submit(files);assert.equal(w.ids.buy.hidden,true);assert.equal(w.ids.pack.hidden,true);if(lang==='en')assert.doesNotMatch(w.ids.report.textContent,/[\u3040-\u9fff]/);}
@@ -40,7 +40,7 @@ const outlet=read('../outlet.js');
 function route(html,href){const anchors=[...html.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>/g)].map(m=>({href:m[1],getAttribute(){return this.href;}}));vm.runInNewContext(outlet,{document:{querySelectorAll:()=>anchors},location:new URL(href),URL,URLSearchParams});return anchors.map(a=>a.href);}
 for(const file of ['index.html','en.html']){
  const html=read(file),base='https://tomoka-uzumaki-ai.github.io/private-care-check-jp/seller-finance/csv-ready/'+file;
- assert.match(html,/logic\.js\?v=20261030c/);assert.match(html,/app\.js\?v=20261030c/);assert.match(html,/outlet\.js\?v=20261030c/);
+ assert.match(html,/logic\.js\?v=20261030c/);assert.match(html,/app\.js\?v=20261030d/);assert.match(html,/outlet\.js\?v=20261030c/);
  const before=route(html,base);for(const suffix of ['?from=itch','?from=other','?from=gumroad.example'])assert.deepEqual(route(html,base+suffix),before);
  const changed=route(html,base+'?from=gumroad');assert.ok(changed.includes('https://jikkenlog.gumroad.com/l/csv-income-reconciliation-kit'));assert.ok(!changed.includes('https://tiny-deduction-lab.itch.io/csv-income-reconciliation-kit'));
  for(const u of changed.filter(u=>u.startsWith('/')))assert.equal(new URL(u,base).searchParams.get('from'),'gumroad','language/back/trial/map links keep source');
