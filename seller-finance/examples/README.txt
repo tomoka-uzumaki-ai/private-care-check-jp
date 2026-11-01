@@ -8,7 +8,7 @@ review.htmlをブラウザーで開き、summary.csvと照合してください�
 
 入力JSONは無料版 https://tomoka-uzumaki-ai.github.io/private-care-check-jp/seller-finance/ の「入力JSONを読み込む」で試せます。
 このZIPにPythonの実行コードは含まれません。出力例を確認するための見本です。
-複数CSV処理のコード・日本語の手順は https://tiny-deduction-lab.itch.io/csv-income-reconciliation-kit にあります。Python3.9以上が動くPCが必要、最低US$3。各ASPのCSV自動変換ではありません。
+複数CSV処理のコード・日本語の手順は https://tiny-deduction-lab.itch.io/csv-income-reconciliation-kit にあります。Python3.9以上が動くPCが必要、通常価格US$3。各ASPのCSV自動変換ではありません。
 
 期待結果: JPY確定収入10200/実入金7000/未回収3000/支払済み費用2000/回収差額5000。USD確定25.50/実入金20.50/未回収5.00/費用5.50/回収差額15.00。
 

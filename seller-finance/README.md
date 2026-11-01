@@ -26,7 +26,7 @@ row,period,name,type,currency,basis,amount,refunds,platformFees,received,payoutF
 
 ## 複数CSVの処理を繰り返す場合だけ
 
-[CSV収支照合キット — itch.io、最低US$3](https://tiny-deduction-lab.itch.io/csv-income-reconciliation-kit)
+[CSV収支照合キット — itch.io、通常価格US$3](https://tiny-deduction-lab.itch.io/csv-income-reconciliation-kit)
 
 同じ13列へ整えた複数CSVをまとめて処理し、不正な行・期間の混在・重複を確認するPythonキットです。ZIPでコード・入力例・手順を受け取り、通貨別の集計CSV、確認票HTML、整理した入力JSON、計算結果JSONを作れます。無料の1ファイル集計だけで済む場合は購入不要です。
 
